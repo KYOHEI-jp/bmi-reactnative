@@ -12,9 +12,45 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+     paddingTop: 23,
+     
   },
-});
+  input: {
+     margin: 15,
+     height: 40,
+     borderWidth: 1,
+     padding: 10,
+  },
+  submitButton: {
+     backgroundColor: '#ff6666',
+     padding: 10,
+     margin: 15,
+     height: 40,
+  },
+  submitButtonText:{
+     textAlign: "center",
+     color: 'white',
+     fontSize: 18,
+  },
+  output:{
+     textAlign: "center",
+     fontSize: 30,
+  },
+  title:{
+     paddingTop:30,
+     paddingBottom:10,
+     textAlign: "center",
+     fontSize: 30,
+     fontWeight:"bold",
+  },
+  resultText:{
+     paddingTop:20,
+     paddingBottom:10,
+     textAlign: "center",
+     fontSize: 30,
+     color: 'blue'
+  },
+  label:{
+     marginLeft: 15,
+  }
+})
