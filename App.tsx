@@ -1,56 +1,41 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { Component } from 'react';
+import { StyleSheet, Text, TextInput, TouchableOpacity, View, } from 'react-native';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-     paddingTop: 23,
-     
-  },
-  input: {
-     margin: 15,
-     height: 40,
-     borderWidth: 1,
-     padding: 10,
-  },
-  submitButton: {
-     backgroundColor: '#ff6666',
-     padding: 10,
-     margin: 15,
-     height: 40,
-  },
-  submitButtonText:{
-     textAlign: "center",
-     color: 'white',
-     fontSize: 18,
-  },
-  output:{
-     textAlign: "center",
-     fontSize: 30,
-  },
-  title:{
-     paddingTop:30,
-     paddingBottom:10,
-     textAlign: "center",
-     fontSize: 30,
-     fontWeight:"bold",
-  },
-  resultText:{
-     paddingTop:20,
-     paddingBottom:10,
-     textAlign: "center",
-     fontSize: 30,
-     color: 'blue'
-  },
-  label:{
-     marginLeft: 15,
-  }
-})
+class BMIcalculator extends Component {
+  state = {
+    height: '',
+    weight: '',
+    bmi: '',
+    BmiResult: '',
+ }
+ handleHeight = (text) => {
+    this.setState({ height: text })
+ }
+ handleWeight = (text) => {
+    this.setState({ weight: text })
+ }
+ calculate = (height, weight) => {
+    //calculation
+    var result = (parseFloat(weight)*10000)/(parseFloat(height)*parseFloat(height));
+    result = result.toFixed(2);
+    //display result
+    this.setState({ bmi: result })
+    if(result<18.5){
+       this.setState({BmiResult:'Underweight'})
+    }
+    else if(result>=18.5&&result<25){
+       this.setState({BmiResult:'Normal weight'})
+    }
+    else if(result>=25&&result<30){
+       this.setState({BmiResult:'Overweight'})
+    }
+    else if(result>=30){
+       this.setState({BmiResult:'Obese'})
+    }
+    else{
+       alert('Incorrect Input!');
+       this.setState({BmiResult:''})
+    }
+ }
+ 
